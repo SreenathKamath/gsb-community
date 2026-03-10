@@ -1,0 +1,124 @@
+/* ================= TEMPLE HERO ================= */
+
+.temple-hero {
+  height: 320px;
+  background: linear-gradient(135deg, #8b5a00, #d4a017);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft glow overlay */
+.temple-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+}
+
+.temple-hero-overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.temple-hero-overlay h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.temple-hero-overlay p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+
+/* ================= PAGE WRAPPER ================= */
+
+.temple-detail-page {
+  padding: 80px 8% 120px;
+  background: #fff7e6;
+  min-height: 100vh;
+}
+
+
+/* ================= BIG CONTENT CARDS ================= */
+
+.temple-card {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  background: #ffffff;
+  padding: 40px 32px;
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.temple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.12);
+}
+
+.temple-card h2 {
+  margin-bottom: 18px;
+  color: #b8860b;
+  font-size: 1.6rem;
+}
+
+.temple-card p {
+  color: #555;
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+
+/* ================= GRID FOR PRIESTS & POOJAS ================= */
+
+.temple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+
+/* ================= SMALL INFO CARDS ================= */
+
+.mini-card {
+  background: #fff3cd;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.mini-card:hover {
+  background: #ffe08a;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .temple-hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .temple-detail-page {
+    padding: 60px 6% 100px;
+  }
+
+  .temple-card {
+    padding: 28px 22px;
+  }
+}

@@ -1,0 +1,234 @@
+/* ================= COMMUNITY DETAIL PAGE ================= */
+
+.community-detail-page {
+  padding: 140px 8% 100px;
+  background: #fff7e6;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* HERO SECTION */
+.community-hero {
+  margin-bottom: 50px;
+}
+
+.community-hero-logo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.community-hero-logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.community-hero-title {
+  font-size: 2.6rem;
+  color: #2b2b2b;
+  margin-bottom: 8px;
+}
+
+.community-hero-founded {
+  font-size: 1rem;
+  color: #b8860b;
+  font-weight: 500;
+}
+
+/* BIG INFO CARDS */
+.community-detail-card {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.community-detail-card h2 {
+  margin-bottom: 16px;
+  color: #b8860b;
+}
+
+.community-detail-card p {
+  color: #555;
+  line-height: 1.8;
+}
+
+/* MEMBERS GRID */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.member-card {
+  background: #fff3cd;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.member-card h4 {
+  margin-bottom: 6px;
+  color: #2b2b2b;
+}
+
+.member-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.member-card:hover {
+  background: #ffe08a;
+  transform: translateY(-4px);
+}
+/* ================= COMMUNITY LIST PAGE ================= */
+
+.community-list-page {
+  padding: 140px 8% 100px;   /* space for fixed navbar */
+  background: #fff7e6;       /* same soft temple tone */
+  min-height: 100vh;         /* full screen height */
+  text-align: center;        /* centers hero title */
+  max-width: 1400px;         /* prevents ultra-wide stretch */
+  margin: 0 auto;            /* keeps layout centered */
+}
+
+/* ================= COMMUNITY LIST HERO ================= */
+
+.community-list-hero {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.community-list-hero h1 {
+  font-size: 3rem;
+  color: #b8860b;
+  margin-bottom: 12px;
+}
+
+.community-list-hero p {
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ================= COMMUNITY GRID LAYOUT ================= */
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet → 2 per row */
+@media (max-width: 992px) {
+  .community-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile → 1 per row */
+@media (max-width: 600px) {
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= CARD ENHANCEMENTS ================= */
+
+.community-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 26px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft golden glow on hover */
+.community-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(218,165,32,0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.community-card:hover::before {
+  opacity: 1;
+}
+
+.community-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+}
+
+/* LOGO UPGRADE */
+.community-logo-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 0 3px #f0d48a,
+    0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease;
+}
+
+.community-card:hover .community-logo-wrapper {
+  transform: scale(1.05);
+}
+
+.community-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.community-name {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+  color: #2b2b2b;
+}
+
+.community-desc {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* CTA */
+.community-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #b8860b;
+  transition: letter-spacing 0.25s ease;
+}
+
+.community-card:hover .community-link {
+  letter-spacing: 0.5px;
+}
