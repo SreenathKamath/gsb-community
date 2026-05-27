@@ -1,49 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
-import { GiDrum, GiTempleGate, GiSoccerBall, GiTheaterCurtains, GiSun } from 'react-icons/gi';
+import { FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import { events } from '../data/events';
 
 const Events = () => {
-  const events = [
-    {
-    id: 1,
-    title: "Holi Utsav",
-    description:
-      "A joyful celebration of Holi featuring traditional rituals, colors, music, and community togetherness.",
-    date: { day: "08", month: "MAR" },
-    time: "3:00 PM",
-    location: "Karanakodam Central",
-    icon: <GiSun />
-  },
-    {
-      id: 2,
-      title: "Pragathi Cup-2026",
-      description: "All India GSB foorball league-2026",
-      date: { day: "03", month: "April" },
-      time: "9:00 AM",
-      location: "Redkite, Vytilla",
-      icon: <GiSoccerBall />
-    },
-    {
-      id: 3,
-      title: "Sree Narayana Devar Aarattu",
-      description: "Sree Narayana Devar Aarattu 2026-Karnakod",
-      date: { day: "27", month: "June" },
-      time: "6:30 PM",
-      location: "TD Temple, Karanakodam",
-      icon: <GiTheaterCurtains />
-    },
-    {
-      id: 4,
-      title: "Mandalam Mahotsav",
-      description: "Mandala Maasacharanam",
-      date: { day: "27", month: "DEC" },
-      time: "7:00 PM",
-      location: "SVB Devi temple, KDM",
-      icon: <GiDrum />
-    }
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -59,23 +19,27 @@ const Events = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      transition: { duration: 0.5, ease: 'easeOut' }
     }
   };
 
   return (
-    <section className="events-section">
+    <section className="events-section page-events-section">
       <div className="section-container">
-        <motion.h2 
-          className="section-title"
+        <motion.div
+          className="section-heading"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Upcoming Events
-        </motion.h2>
-        <motion.div 
+          <p className="section-eyebrow">Calendar</p>
+          <h1 className="section-title">Upcoming Events</h1>
+          <p className="section-intro">
+            Festivals, sports meets, temple observances, and cultural gatherings from United Karnakod.
+          </p>
+        </motion.div>
+        <motion.div
           className="events-grid"
           variants={containerVariants}
           initial="hidden"
@@ -83,15 +47,16 @@ const Events = () => {
           viewport={{ once: true }}
         >
           {events.map((event) => (
-            <motion.div 
-              key={event.id} 
+            <motion.article
+              key={event.id}
               className="event-card"
               variants={cardVariants}
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
             >
               <div className="event-image">
-                <div className="event-icon">{event.icon}</div>
+                <div className="event-category">{event.category}</div>
+                <div className="event-icon">{React.createElement(event.icon)}</div>
                 <div className="event-date">
                   <div className="event-date-day">{event.date.day}</div>
                   <div className="event-date-month">{event.date.month}</div>
@@ -109,7 +74,7 @@ const Events = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
       </div>

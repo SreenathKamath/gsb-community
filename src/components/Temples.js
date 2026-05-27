@@ -4,6 +4,7 @@ import { GiTempleGate, GiIncense, GiLotus, GiFireBowl, GiCandleFlame } from 'rea
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import { temples } from "../data/temples";
+import SectionHeader from './landing/SectionHeader';
 
 const Temples = () => {
 
@@ -47,15 +48,9 @@ const Temples = () => {
   return (
     <section className="temples-section">
       <div className="section-container">
-        <motion.h2 
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Our Sacred Temples
-        </motion.h2>
+        <SectionHeader eyebrow="Temple Directory" title="Our Sacred Temples">
+          Explore the shrines, poojas, priests, and observances that anchor the spiritual rhythm of Karanakodam.
+        </SectionHeader>
         <motion.div 
           className="temples-grid"
           variants={containerVariants}
@@ -82,6 +77,7 @@ const Temples = () => {
                 <p className="temple-location">
                   <FaMapMarkerAlt /> {temple.location}
                 </p>
+                <span className="temple-card-action">View temple details</span>
               </div>
             </motion.div>
           ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEye, FaBullseye } from 'react-icons/fa';
+import { FaBullseye, FaHandsHelping, FaOm } from 'react-icons/fa';
+import SectionHeader from './landing/SectionHeader';
 
 const Vision = () => {
   const containerVariants = {
@@ -8,7 +9,7 @@ const Vision = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.18
       }
     }
   };
@@ -18,23 +19,17 @@ const Vision = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: 'easeOut' }
     }
   };
 
   return (
     <section id="vision" className="vision-section">
       <div className="section-container">
-        <motion.h2 
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Our Vision & Mission
-        </motion.h2>
-        <motion.div 
+        <SectionHeader eyebrow="Purpose" title="Our Vision & Mission">
+          United Karnakod keeps heritage visible, participation simple, and every community effort connected.
+        </SectionHeader>
+        <motion.div
           className="vision-content"
           variants={containerVariants}
           initial="hidden"
@@ -42,19 +37,27 @@ const Vision = () => {
           viewport={{ once: true }}
         >
           <motion.div className="vision-card" variants={itemVariants}>
-            <div className="vision-icon"><FaEye /></div>
+            <div className="vision-icon"><FaOm /></div>
             <h3>Vision</h3>
             <p>
-              To unite the entire GSB community of Karanakodam under one platform, 
-              strengthening cultural, social, and spiritual bonds.
+              To unite the entire GSB community of Karanakodam under one platform, strengthening cultural, social,
+              and spiritual bonds.
             </p>
           </motion.div>
           <motion.div className="vision-card" variants={itemVariants}>
             <div className="vision-icon"><FaBullseye /></div>
             <h3>Mission</h3>
             <p>
-              Provide a common digital and physical platform to share news, celebrate culture, 
-              and encourage participation in rituals, sports, arts, and social service.
+              Provide a common digital and physical platform to share news, celebrate culture, and encourage
+              participation in rituals, sports, arts, and social service.
+            </p>
+          </motion.div>
+          <motion.div className="vision-card vision-card-featured" variants={itemVariants}>
+            <div className="vision-icon"><FaHandsHelping /></div>
+            <h3>Participation</h3>
+            <p>
+              Make it easier for families, youth, elders, volunteers, and organizers to stay informed and contribute
+              to the shared life of Karnakod.
             </p>
           </motion.div>
         </motion.div>

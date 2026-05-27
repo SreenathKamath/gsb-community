@@ -19,11 +19,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
     <Link to="/" className={`logo ${scrolled ? "logo-scrolled" : "logo-top"}`}>
       United Karnakod
     </Link>
-      <button className="menu-toggle" onClick={toggleMenu}>
+      <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle navigation" aria-expanded={menuOpen}>
         <span></span>
         <span></span>
         <span></span>
