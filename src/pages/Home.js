@@ -6,6 +6,7 @@ import NewsTicker from '../components/NewsTicker';
 import Events from '../components/Events';
 import Temples from '../components/Temples';
 import CommunitySpotlight from '../components/landing/CommunitySpotlight';
+import ServicesTeaser from '../components/landing/ServicesTeaser';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <Vision />
       <NewsTicker />
       <CommunitySpotlight />
+      <ServicesTeaser />
       <Events />
       <Temples />
       <Footer />

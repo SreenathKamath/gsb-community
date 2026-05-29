@@ -8,6 +8,7 @@ import Gallery from './pages/Gallery';
 import News from './pages/News';
 import GetInvolved from './pages/GetInvolved';
 import Contact from './pages/Contact';
+import Services from './pages/Services';
 import './index.css';
 import OurStory from './pages/Ourstory';
 import TempleDetail from "./pages/TempleDetail";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/news" element={<News />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/temples/:id" element={<TempleDetail />} />

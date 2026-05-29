@@ -15,6 +15,7 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <Link to="/about">About Us</Link>
           <Link to="/community">Community Directory</Link>
+          <Link to="/services">Community Services</Link>
           <Link to="/events">Events</Link>
           <Link to="/gallery">Gallery</Link>
         </div>
