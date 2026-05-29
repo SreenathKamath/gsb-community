@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+  const solidHeader = !isHome || scrolled || menuOpen;
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -19,8 +23,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
-    <Link to="/" className={`logo ${scrolled ? "logo-scrolled" : "logo-top"}`}>
+    <nav className={`navbar ${solidHeader ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''}`}>
+    <Link to="/" className={`logo ${solidHeader ? "logo-scrolled" : "logo-top"}`}>
       United Karnakod
     </Link>
       <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle navigation" aria-expanded={menuOpen}>

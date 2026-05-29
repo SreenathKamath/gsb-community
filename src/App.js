@@ -9,6 +9,7 @@ import News from './pages/News';
 import GetInvolved from './pages/GetInvolved';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
+import PageAura from './components/PageAura';
 import './index.css';
 import OurStory from './pages/Ourstory';
 import TempleDetail from "./pages/TempleDetail";
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <PageAura />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/our-story" element={<OurStory />} />
