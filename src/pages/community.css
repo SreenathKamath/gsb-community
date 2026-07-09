@@ -63,6 +63,29 @@
   line-height: 1.8;
 }
 
+.community-info-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.community-info-grid div {
+  background: #fff8df;
+  border: 1px solid rgba(184, 134, 11, 0.18);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.community-info-grid span {
+  color: #b8860b;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
 /* MEMBERS GRID */
 .members-grid {
   display: grid;

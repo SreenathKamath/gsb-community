@@ -36,8 +36,41 @@ const CommunityDetail = () => {
         <p>{community.description}</p>
       </div>
 
+      {(community.registration || community.location || community.officialContactPhone || community.officialEmail) && (
+        <div className="community-detail-card">
+          <h2>Organization Details</h2>
+          <div className="community-info-grid">
+            {community.registration && (
+              <div>
+                <span>Registration</span>
+                <p>{community.registration}</p>
+              </div>
+            )}
+            {community.location && (
+              <div>
+                <span>Location</span>
+                <p>{community.location}</p>
+              </div>
+            )}
+            {community.officialContactPhone && (
+              <div>
+                <span>Official Contact</span>
+                <p>{community.officialContactPhone}</p>
+              </div>
+            )}
+            {community.officialEmail && (
+              <div>
+                <span>Email</span>
+                <p>{community.officialEmail}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* MEMBERS */}
-      <div className="community-detail-card">
+      {community.members.length > 0 && (
+        <div className="community-detail-card">
         <h2>Members & Leadership</h2>
 
         <div className="members-grid">
@@ -49,6 +82,7 @@ const CommunityDetail = () => {
           ))}
         </div>
       </div>
+      )}
       {/* HIGHLIGHTS / RECENT ACTIVITIES */}
       {community.highlights && (
         <div className="community-detail-card">

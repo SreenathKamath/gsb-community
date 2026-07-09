@@ -1,45 +1,38 @@
-import { GiDrum, GiSoccerBall, GiSun, GiTheaterCurtains } from "react-icons/gi";
+import { generatedEvents } from "./generatedEvents";
+import { eventIcons, fallbackEventIcon } from "./eventIcons";
 
-export const events = [
-  {
-    id: 1,
-    title: "Holi Utsav",
-    description:
-      "A joyful celebration of Holi featuring traditional rituals, colors, music, and community togetherness.",
-    date: { day: "08", month: "MAR" },
-    time: "3:00 PM",
-    location: "Anugraha Charitable Trust, Karanakodam",
-    icon: GiSun,
-    category: "Festival"
-  },
-  {
-    id: 2,
-    title: "Pragathi Cup 2026",
-    description: "All India GSB football league bringing teams and supporters together for a community sports weekend.",
-    date: { day: "03", month: "APR" },
-    time: "9:00 AM",
-    location: "Redkite, Vytilla",
-    icon: GiSoccerBall,
-    category: "Sports"
-  },
-  {
-    id: 3,
-    title: "Sree Narayana Devar Aarattu 2026",
-    description: "Annual Aarattu observance with devotional gatherings and traditional temple participation.",
-    date: { day: "27", month: "JUN" },
-    time: "6:30 PM",
-    location: "TD Temple, Karanakodam",
-    icon: GiTheaterCurtains,
-    category: "Temple"
-  },
-  {
-    id: 4,
-    title: "Mandalam Mahotsav",
-    description: "Mandala Maasacharanam with evening prayers, bhajans, and community offerings.",
-    date: { day: "27", month: "DEC" },
-    time: "7:00 PM",
-    location: "SVB Devi Temple, KDM",
-    icon: GiDrum,
-    category: "Devotion"
-  }
-];
+const MONTH_LABELS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+function parseEventDate(value) {
+  const date = new Date(`${value}T00:00:00`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function buildEvent(record) {
+  const date = parseEventDate(record.date);
+  if (!date) return null;
+
+  return {
+    id: record.eventId || record.title,
+    title: record.title,
+    description: record.description,
+    date: {
+      day: String(date.getDate()).padStart(2, "0"),
+      month: MONTH_LABELS[date.getMonth()]
+    },
+    time: record.time,
+    location: record.location,
+    category: record.category,
+    icon: eventIcons[(record.category || "").toLowerCase()] || fallbackEventIcon,
+    sortDate: date
+  };
+}
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+export const events = generatedEvents
+  .map(buildEvent)
+  .filter((event) => event && event.sortDate >= today)
+  .sort((a, b) => a.sortDate - b.sortDate)
+  .map(({ sortDate, ...event }) => event);

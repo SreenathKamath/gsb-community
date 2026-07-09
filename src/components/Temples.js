@@ -35,9 +35,9 @@ const Temples = () => {
         return <GiIncense />;
       case "shivalayam":
         return <GiLotus />;
-      case "Muthi-Bhagavathy-Temple":
+      case "muthi-bhagavathy-temple":
         return <GiFireBowl />;
-      case "Shri-Sidhivinayak-Mandir":
+      case "shri-sidhivinayak-mandir":
         return <GiIncense />;
       default:
         return <GiCandleFlame />;
