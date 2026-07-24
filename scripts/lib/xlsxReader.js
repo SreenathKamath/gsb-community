@@ -117,6 +117,22 @@ function excelDate(value) {
   return new Date(Date.UTC(1899, 11, 30) + serial * 86400000).toISOString().slice(0, 10);
 }
 
+// Excel stores a time-of-day as the fractional part of a date serial (e.g. 0.770833 => 6:30 PM).
+// Cells typed as plain text ("3:00 PM", "18:30") are left untouched.
+function excelTime(value) {
+  const cleaned = clean(value);
+  if (!/^\d*\.\d+$/.test(cleaned)) return cleaned;
+
+  const fraction = Number(cleaned) % 1;
+  const totalMinutes = Math.round(fraction * 24 * 60);
+  const hours24 = Math.floor(totalMinutes / 60) % 24;
+  const minutes = totalMinutes % 60;
+  const period = hours24 >= 12 ? "PM" : "AM";
+  const hours12 = hours24 % 12 === 0 ? 12 : hours24 % 12;
+
+  return `${hours12}:${String(minutes).padStart(2, "0")} ${period}`;
+}
+
 function sheetRecords(sheetXml, shared) {
   const rows = Array.from(sheetXml.matchAll(/<row\b([^>]*)>([\s\S]*?)<\/row>/g)).map((rowMatch) => {
     const cells = [];
@@ -151,6 +167,7 @@ function readWorkbookRecords(workbookPath) {
 module.exports = {
   clean,
   excelDate,
+  excelTime,
   findWorkbook,
   readWorkbookRecords
 };

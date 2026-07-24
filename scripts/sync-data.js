@@ -1,5 +1,5 @@
 const path = require("path");
-const { clean, excelDate } = require("./lib/xlsxReader");
+const { clean, excelDate, excelTime } = require("./lib/xlsxReader");
 const { syncWorkbook } = require("./lib/syncWorkbook");
 
 const root = path.resolve(__dirname, "..");
@@ -45,7 +45,7 @@ const SOURCES = [
       title: clean(record.title),
       description: clean(record.description),
       date: excelDate(record.date),
-      time: clean(record.time),
+      time: excelTime(record.time),
       location: clean(record.location),
       category: clean(record.category)
     })
@@ -93,6 +93,22 @@ const SOURCES = [
       description: clean(record.description),
       priestsRaw: clean(record.priests),
       poojasRaw: clean(record.poojas)
+    })
+  },
+  {
+    key: "creators",
+    candidateNames: ["creator_details.xlsx", "creators.xlsx"],
+    outputPath: "src/data/generatedCreators.js",
+    outputVarName: "generatedCreators",
+    filter: (record) => record.creator_id || record.name,
+    map: (record) => ({
+      creatorId: clean(record.creator_id),
+      name: clean(record.name),
+      role: clean(record.role),
+      organization: clean(record.organization),
+      bio: clean(record.bio),
+      phone: clean(record.phone),
+      email: clean(record.email)
     })
   }
 ];

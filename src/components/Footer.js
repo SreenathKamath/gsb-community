@@ -68,7 +68,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 GSB Karanakodam Community. All rights reserved.</p>
+        <p>&copy; 2026 GSB Karanakodam Community. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -37,5 +37,32 @@ export const generatedEvents = [
     "time": "7:00 PM",
     "location": "SVB Devi Temple, KDM",
     "category": "Devotion"
+  },
+  {
+    "eventId": "5",
+    "title": "Ganesh Chaturthi",
+    "description": "Ganesh Chaturthi, also known as Vinayaka Chaturthi or Vinayaka Chavithi is a Hindu festival celebrating the birth of Lord Ganesha. It is a 10-day celebration denoting the arrival of Ganesha on earth, the lord of success and knowledge.",
+    "date": "2026-09-14",
+    "time": "6:30 PM",
+    "location": "Sri Sidhi Vinayak Mandir, KDM",
+    "category": "Festival"
+  },
+  {
+    "eventId": "6",
+    "title": "Janmashtami",
+    "description": "Janmashtami is a major Hindu festival celebrating the birth of Lord Krishna, the eighth avatar of the god Vishnu. It falls on the eighth day (Ashtami) of the dark half of the lunar month of Bhadrapada (August–September) and is marked by fasting, midnight prayers, and re-enactments of Krishna's life.",
+    "date": "2026-09-04",
+    "time": "0",
+    "location": "Sree Krishna Temple, Thammanam",
+    "category": "Devotion"
+  },
+  {
+    "eventId": "7",
+    "title": "Dussehra",
+    "description": "Dussehra, also known as Vijayadashami, is a major Hindu festival celebrating the triumph of good over evil. It marks the victory of the deity Rama over the demon king Ravana, as well as the goddess Durga's defeat of the buffalo demon Mahishasura.",
+    "date": "2026-10-20",
+    "time": "6:00 AM",
+    "location": "All temples",
+    "category": "Festival"
   }
 ];
