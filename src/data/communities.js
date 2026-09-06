@@ -1,7 +1,7 @@
 import fallbackLogo from "../assets/images/lord123.png";
 import { generatedOrganizations } from "./generatedOrganizations";
 import { organizationLogos } from "./organizationLogos";
-import { splitNumberedList } from "./lib/textLists";
+import { splitNumberedList, isPlaceholderValue } from "./lib/textLists";
 
 const legacyOrganizationDetails = {
   "6": {
@@ -79,10 +79,37 @@ function buildMembers(boardMembersRaw, memberDescriptionRaw, fallbackMembers = [
     return fallbackMembers;
   }
 
-  return names.map((name, index) => ({
-    name,
-    role: roles[index] || roles[0] || "Member"
-  }));
+  // Roles are matched to names by their shared position in the two numbered
+  // lists, so pair them up before dropping anything - filtering names first
+  // would shift that alignment and mismatch every entry after the drop.
+  const fallbackRole = !isPlaceholderValue(roles[0]) ? roles[0] : "Committee Member";
+  const members = names
+    .map((name, index) => ({
+      name,
+      role: !isPlaceholderValue(roles[index]) ? roles[index] : fallbackRole
+    }))
+    .filter((member) => !isPlaceholderValue(member.name));
+
+  return members.length ? members : fallbackMembers;
+}
+
+function combineDescriptionAndPurpose(description, purpose) {
+  const cleanDescription = String(description || "").trim();
+  const cleanPurpose = String(purpose || "").trim();
+
+  if (!cleanPurpose) return cleanDescription;
+  if (!cleanDescription) return cleanPurpose;
+
+  // Compare case-insensitively so "To promote..." vs "to promote..." (a
+  // common Excel authoring inconsistency) is recognized as the same text
+  // instead of being appended twice.
+  const normalizedDescription = cleanDescription.toLowerCase();
+  const normalizedPurpose = cleanPurpose.toLowerCase();
+  if (normalizedDescription.includes(normalizedPurpose) || normalizedPurpose.includes(normalizedDescription)) {
+    return cleanDescription.length >= cleanPurpose.length ? cleanDescription : cleanPurpose;
+  }
+
+  return `${cleanDescription} ${cleanPurpose}`;
 }
 
 function buildHighlights(organization, fallbackHighlights = []) {
@@ -119,7 +146,7 @@ function buildCommunity(orgId) {
     logo: organizationLogos[orgId] || fallbackLogo,
     shortDescription,
     founded: generated?.foundedOn || legacy.founded || "To be updated",
-    description: purpose && purpose !== description ? `${description} ${purpose}` : description,
+    description: combineDescriptionAndPurpose(description, purpose),
     registration: generated?.registration || "",
     location: generated?.location || "",
     officialContactPhone: generated?.officialContactPhone || "",
